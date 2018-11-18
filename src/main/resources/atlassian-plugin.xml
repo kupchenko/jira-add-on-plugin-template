@@ -1,0 +1,43 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add i18n resource -->
+    <resource type="i18n" name="i18n" location="plugin"/>
+    
+    <!-- add web resources -->
+    <web-resource key="plugin-config-resources" name="Plugin Config Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="plugin-config.css" location="/css/plugin-config.css"/>
+        <resource type="download" name="plugin-config.js" location="/js/plugin-config.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>plugin-config</context>
+    </web-resource>
+
+    <!-- add rest base URL -->
+    <rest key="rest" path="/plugin" version="1.0">
+        <description>Provides REST resources for plugin.</description>
+    </rest>
+
+    <!-- add web-items -->
+    <web-item key="plugin-config-web-item" name="Plugin Config Web Item" section="system.admin/system" weight="200">
+        <label key="plugin-config.action.label"/>
+        <link linkId="plugin-config-web-item-link">/plugins/servlet/config</link>
+    </web-item>
+
+    <!-- add servlets -->
+    <servlet name="Invite Page Servlet" i18n-name-key="invite-page-servlet.name"
+             key="invite-page-servlet"
+             class="me.kupchenko.plugin.servlet.PluginConfigServlet">
+        <description key="invite-page-servlet.description">Plugin Config Servlet</description>
+        <url-pattern>/config</url-pattern>
+    </servlet>
+    
+</atlassian-plugin>

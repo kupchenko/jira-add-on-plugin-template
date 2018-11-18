@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>$i18n.getText("plugin-config.label")</title>
+##    It allows to show this html inside of jira UI. Only this html is shown in case you remove it.
+    <meta name="decorator" content="atl.admin">
+    $webResourceManager.requireResource("me.kupchenko.plugin.jira-add-on-plugin:plugin-config-resources")
+</head>
+<body>
+<form id="plugin-config-form" class="aui">
+
+    <h3>$i18n.getText("fields-group.one.label")</h3>
+    <fieldset class="top-label">
+        <div class="field-group">
+            <label for="someField">$i18n.getText("somefield.label")</label>
+            <input type="text" id="someField" name="someField" class="text">
+        </div>
+    </fieldset>
+
+    <h3>$i18n.getText("fields-group.second.label")</h3>
+    <fieldset class="top-label">
+        <div class="field-group">
+            <label for="anotherField">$i18n.getText("anotherfield.label")</label>
+            <input type="text" id="anotherField" name="anotherField" class="text">
+        </div>
+    </fieldset>
+
+    <div class="field-group">
+        <input type="submit" value="$i18n.getText("plugin-config.submit.label")" class="button" id="save-plugin-config">
+    </div>
+
+    <div id="saveConfigResponse"></div>
+</form>
+</body>
+</html>
